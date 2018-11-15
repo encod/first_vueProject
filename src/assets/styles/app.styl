@@ -1,0 +1,155 @@
+@import './variables'
+@import './mixins'
+
+global-reset()
+
+*,*:before,*:after
+    max-height 100000px
+
+html, body
+    height 100%
+    font-size 28px
+    color $fcBlack
+    font-family "Source Han Sans CN", "noto sans", '思源黑体', "Helvetica Neue", Helvetica, Arial,   sans-serif
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    padding-top constant(safe-area-inset-top)        //为导航栏+状态栏的高度 88px
+    padding-left constant(safe-area-inset-left)     //如果未竖屏时为0
+    padding-right constant(safe-area-inset-right)   //如果未竖屏时为0
+    padding-bottom constant(safe-area-inset-bottom) //为底下圆弧的高度 34px
+#app
+    height 100%
+    width 100%
+    // margin-left 0
+    // margin-right 0
+    background-color #f1f1f1
+    max-width 1500px
+    margin 0 auto
+    position relative
+    .componentHeader
+        display none
+
+#app.appLoaded
+    height 100%
+    width 100%
+    background-image none
+    .componentHeader
+        display block
+        max-width 1500px
+        z-index 100
+
+.mainBox
+    background-color #f1f1f1
+    -webkit-overflow-scrolling touch
+    overflow auto
+    height 100%
+    width 100%
+    box-sizing border-box
+    position relative
+    overflow-x hidden
+
+.academyContent
+    box-flex 1
+    flex 1 1 auto
+    -webkit-overflow-scrolling touch
+    overflow auto
+    width 100%
+    box-sizing border-box
+    position absolute
+    top 88px
+    left 0
+    bottom 0
+    z-index 10
+
+// --------------------------------------
+// no data tips style
+// --------------------------------------
+.noData
+    line-height rem(40)
+    text-align center
+    font-size $fontBase
+    background-color $fcWhite
+
+// --------------------------------------
+// loading mask, alert mask style
+// --------------------------------------
+.mask
+    position absolute
+    top 0
+    left 0
+    width 100%
+    height @width
+    background-color rgba(0, 0, 0, 0%)
+    z-index 1050
+
+// --------------------------------------
+// button style
+// --------------------------------------
+.btn
+    display block
+    color $fcWhite
+    font-size $fontBase
+    padding rem(10)
+    margin rem(20)
+    border-radius rem(5)
+    background-color $fcRed
+    text-align center
+    &:active
+        background-color darken($fcRed, 30%)
+
+.backBtn
+    background-image url('../images/common/arrow_left.png')
+    height 88px
+    padding-left 30px
+    width 88px
+    background-size 40%
+    background-repeat no-repeat
+    background-position 0% 50%
+    display block
+::-webkit-input-placeholder
+    color $fcGreyish
+
+.empty-global
+    padding-top 320px
+    margin-top 150px
+    background-image url('../images/common/article_empty_sec.png')
+    background-size 316px 320px
+    background-position top center
+    background-repeat no-repeat
+
+.load-more
+    width 200px
+    height 72px
+    margin 0 auto
+    text-align center
+    line-height 72px
+    position relative
+    &::after
+        content ''
+        display block
+        position absolute
+        right 8px
+        top 20px
+        width 32px
+        height 32px
+        background-image url('../images/common/arrow_down.png')
+        background-repeat no-repeat
+        background-position center
+        background-size 32px 32px
+
+.no-more
+    height 72px
+    margin 0 auto
+    text-align center
+    line-height 72px
+    color $fcGreyish
+
+.spinner
+    width 40px
+    height @width
+    margin 12px auto
+    box-sizing border-box
+    background-image url('../images/loading.svg')
+    background-size contain
+    background-position center center
+    background-repeat no-repeat
+

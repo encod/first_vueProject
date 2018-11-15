@@ -1,0 +1,129 @@
+@import './variables'
+
+// ------------------------------------------
+// remify
+// ------------------------------------------
+rem(value) {
+    remVal = unit(value, 'px') / $fontBase;
+    return unit(remVal, 'rem');
+}
+
+/*
+ * >>>>>>>> 定义超出宽度显示... <<<<<<<<<
+*/
+textOverflow()
+    overflow hidden
+    text-overflow ellipsis
+    white-space nowrap
+
+mutiLineTextOverFlow($num=2)
+    // 多行文本省略
+    display -webkit-box
+    overflow hidden
+    -webkit-line-clamp $num
+    -webkit-box-orient vertical
+
+
+// ------------------------------------------
+//  自定义箭头mixin
+// ------------------------------------------
+arrowBase()
+    content ""
+    display inline-block
+    position absolute
+    top 50%
+    width 1rem
+    height @width
+    border-right 0.1rem solid $fcGrey
+    border-top 0.1rem solid $fcGrey
+    will-change transform
+    transform translateZ(0)
+    transition all 300ms
+    z-index 1
+
+arrowGreyUp($scaleX=1, $scaleY=1)
+    position relative
+    &:after
+        arrowBase()
+        right (4% * $scaleX)
+        margin-top (-0.8rem * $scaleX)
+        transform rotate(-45deg) scale($scaleX, $scaleY)
+
+arrowGreyRight($scaleX=1, $scaleY=1)
+    position relative
+    &:after
+        arrowBase()
+        right (4% * $scaleX)
+        margin-top (-0.5rem * $scaleX)
+        transform rotate(45deg) scale($scaleX, $scaleY)
+
+arrowGreyDown($scaleX=1, $scaleY=1)
+    position relative
+    &:after
+        arrowBase()
+        right (4% * $scaleX)
+        margin-top (-0.8rem * $scaleX)
+        transform rotate(135deg) scale($scaleX, $scaleY)
+
+arrowGreyLeft($scaleX=1, $scaleY=1)
+    position relative
+    &:after
+        arrowBase()
+        left (4% * $scaleX)
+        margin-top (-0.5rem * $scaleX)
+        transform rotate(-135deg) scale($scaleX, $scaleY)
+
+// ----------------------------------------------------------------
+//  自定义border
+//  第一个参数为全边框，
+//  第二到第五参数遵循上右下左规则，相对应设置true或false即可，
+//  其他参数若要改变值也可直接复制
+// ----------------------------------------------------------------
+retinaBorder($all = false,
+            $top = false, $right = false, $bottom = false, $left = false,
+            $width = 2px, $shape = solid, $color = $fcGreyer, $radius = 0)
+    position relative
+    &::before
+        if $all
+            border $width $shape $color
+        if $top
+            border-top $width $shape $color
+        if $right
+            border-right $width $shape $color
+        if $bottom
+            border-bottom $width $shape $color
+        if $left
+            border-left $width $shape $color
+        content ""
+        border-radius $radius
+        position absolute
+        top 0
+        right 0
+        bottom 0
+        left 0
+        -webkit-transform-origin 0 0
+        -webkit-transform scale(1)
+        pointer-events none
+
+    @media only screen and (-webkit-min-device-pixel-ratio: 2)
+        &::before
+            right -100%
+            bottom -100%
+            -webkit-transform scale(0.5)
+
+    @media only screen and (-webkit-min-device-pixel-ratio: 3)
+        &::before
+            right -200%
+            bottom -200%
+            -webkit-transform scale(1/3)
+// ----------------------------------------------------------------------
+//  clearfix
+// ----------------------------------------------------------------------
+clearfix()
+    zoom 1
+    &:after
+    &:before
+        content ""
+        display table
+    &:after
+        clear both
