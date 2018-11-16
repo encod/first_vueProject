@@ -10,4 +10,3 @@ export default {
 }
 </script>
 <style lang="stylus" scoped src="@/assets/styles/app.styl"></style>
-
