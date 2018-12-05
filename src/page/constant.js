@@ -1,4 +1,4 @@
 export default {
-  pageNotFound: 'pageNotFound',
-  login: 'login'
-}
+    pageNotFound: 'pageNotFound',
+    login: 'login'
+};

@@ -6,7 +6,8 @@
 
 <script>
 export default {
-  name: 'App'
-}
+    name: 'App'
+};
 </script>
+
 <style lang="stylus" scoped src="@/assets/styles/app.styl"></style>

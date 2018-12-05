@@ -3,4 +3,4 @@ import viewsName from '../constant';
 
 export default {
     name: viewsName.login,
-}
+};

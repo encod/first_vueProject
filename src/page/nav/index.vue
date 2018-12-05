@@ -1,5 +1,3 @@
 <template>
-  <div>
-    nav
-  </div>
+    <div>naverr</div>
 </template>
