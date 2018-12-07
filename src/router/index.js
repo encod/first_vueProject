@@ -1,6 +1,5 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-// import home from '../page/home/index.vue';
 import notFound from '../components/pageNotFound.vue';
 
 Vue.use(Router);
@@ -20,8 +19,8 @@ export default new Router({
             }
         },
         {
-            path: '/login',
-            name: '/login',
+            path: '/',
+            name: 'login',
             component: login,
             meta: {
                 title: '登录'
@@ -33,7 +32,7 @@ export default new Router({
             component: notFound
         },
         {
-            path: '/',
+            path: '/home',
             name: '首页',
             component: view('home'),
             meta: {
