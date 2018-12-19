@@ -1,6 +1,7 @@
 'use strict'
 require('./check-versions')()
 
+// 注释掉的代码
 // process.env.NODE_ENV = 'production'
 
 const ora = require('ora')
@@ -11,6 +12,7 @@ const webpack = require('webpack')
 const config = require('../config')
 const webpackConfig = require('./webpack.prod.conf')
 
+// 修改spinner的定义
 // const spinner = ora('building for production...')
 const spinner = ora('building for ' + process.env.NODE_ENV + ' of ' + process.env.env_config + ' mode...' )
 spinner.start()

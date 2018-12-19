@@ -29,7 +29,7 @@ module.exports = {
     filename: '[name].js',
     publicPath: process.env.NODE_ENV === 'production'
       ? config.build.assetsPublicPath
-      : (process.env.NODE_ENV === 'testing' ? config.build.assetsPublicPath : config.dev.assetsPublicPath) //增加判断
+      : (process.env.NODE_ENV === 'testing' ? config.build.assetsPublicPath : config.dev.assetsPublicPath)
   },
   resolve: {
     extensions: ['.js', '.vue', '.json'],
